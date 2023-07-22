@@ -3404,3 +3404,10 @@ SyntaxError: invalid syntax
 [2023-07-22T09:39:44.877+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:39:44.877+0000] {dag.py:2742} INFO - Sync 1 DAGs
 [2023-07-22T09:39:44.923+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:39:44.923+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
 [2023-07-22T09:39:44.963+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.221 seconds
+[2023-07-22T09:40:15.304+0000] {processor.py:157} INFO - Started process (PID=1307) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:40:15.305+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:40:15.310+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:40:15.309+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:40:15.351+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:40:15.385+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:40:15.385+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:40:15.430+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:40:15.430+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:40:15.474+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.177 seconds
