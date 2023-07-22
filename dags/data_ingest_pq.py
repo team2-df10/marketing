@@ -11,7 +11,6 @@ from airflow.hooks.base import BaseHook
 from airflow.exceptions import AirflowNotFoundException
 from airflow.operators.dummy import DummyOperator
 from airflow import settings
-#from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateExternalTableOperator, BigQueryOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryExecuteQueryOperator,BigQueryCreateExternalTableOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 import pyarrow.csv as pv
@@ -25,7 +24,6 @@ BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", 'final_project')
 
 dataset_file = "bank_marketing.csv"
 dataset_url = f"https://drive.google.com/file/d/1t4IrOjA0xIoTwlpLjkJYnq8V7g-qP4iU"
-# path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
 path_to_local_home = "/opt/airflow"
 parquet_file = dataset_file.replace('.csv', '.parquet')
 destination_table = os.environ.get("BIGQUERY_TABLE", 'marketing')
@@ -61,39 +59,6 @@ def upload_to_gcs(bucket, object_name, local_file):
     blob = bucket.blob(object_name)
     blob.upload_from_filename(local_file)
 
-query = f"""
-CREATE OR REPLACE EXTERNAL TABLE final_project.raw_credit_card
-(
-  client_id INT64,
-  date DATE,
-  age INT64,
-  job STRING,
-  marital STRING,
-  education STRING,
-  `default` STRING,
-  housing STRING,
-  loan STRING,
-  contact STRING,
-  month STRING,
-  day_of_week STRING,
-  duration INT64,
-  campaign INT64,
-  pdays INT64,
-  previous INT64,
-  poutcome STRING,
-  cons_conf_idx FLOAT64,
-  emp_var_rate FLOAT64,
-  cons_price_idx FLOAT64,
-  euribor3m FLOAT64,
-  nr_employed INT64,
-  subscribed STRING
-)
-OPTIONS(
-  format = "PARQUET",
-  uris = ["gs://{BUCKET}/raw/{parquet_file}"]
-)
-"""
-
 
 def add_gcp_connection(ds, **kwargs):
     new_conn = Connection(
@@ -128,7 +93,7 @@ default_args = {
 
 # NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
-    dag_id="data_ingestion_final_project",
+    dag_id="data_ingestion-pq",
     schedule_interval="@weekly",
     default_args=default_args,
     catchup=False,
@@ -144,8 +109,8 @@ with DAG(
 
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
-        bash_command="gdrive_connect.sh"
-        #bash_command=f"curl -sSL {dataset_url} > '{path_to_local_home}/{dataset_file}'"           # for smaller files
+        #bash_command="gdrive_connect.sh"
+        bash_command=f"curl -sSL {dataset_url} > '{path_to_local_home}/{dataset_file}'"           # for smaller files
     )
 
     spark_cleansing_task = BashOperator(
@@ -153,23 +118,21 @@ with DAG(
         bash_command="cd /opt/airflow/spark && python3 spark-cleansing.py"
     )
 
-    """format_to_parquet_task = PythonOperator(
+    format_to_parquet_task = PythonOperator(
         task_id="format_to_parquet_task",
         python_callable=format_to_parquet,
         op_kwargs={
             "src_file": f"{path_to_local_home}/{dataset_file}",
         },
-    )"""
+    )
 
     local_to_gcs_task = PythonOperator(
         task_id="local_to_gcs_task",
         python_callable=upload_to_gcs,
         op_kwargs={
             "bucket": BUCKET,
-            #"object_name": f"raw/{parquet_file}",                       # for parquet
-            "object_name": f"raw/{dataset_file}",                     # for csv
-            #"local_file": f"{path_to_local_home}/{parquet_file}",       # for parquet file
-            "local_file": f"{path_to_local_home}/{dataset_file}"      # for csv
+            "object_name": f"raw/{parquet_file}",                       # for parquet
+            "local_file": f"{path_to_local_home}/{parquet_file}",       # for parquet file
         },
     )
 
@@ -179,7 +142,7 @@ with DAG(
         source_objects=[f"raw/{dataset_file}"],
         destination_project_dataset_table=f"{PROJECT_ID}.{BIGQUERY_DATASET}.{destination_table}",
         skip_leading_rows=1,
-        source_format= 'CSV',
+        source_format= 'PARQUET',
         write_disposition='WRITE_TRUNCATE',
         create_disposition='CREATE_IF_NEEDED',
         autodetect=False,
@@ -209,23 +172,10 @@ with DAG(
             ],
     )
     
-    #bigquery_raw_task = BigQueryExecuteQueryOperator(
-        #task_id="bigquery_raw_task",
-        #sql=query,
-        #use_legacy_sql=False,
-    #)
-
-    """dbt_init_task = BashOperator(
-        task_id="dbt_init_task",
-        bash_command= "cd /opt/airflow/dbt/dbt_dwh && dbt deps && dbt seed --profiles-dir ."
-    )
-    run_dbt_task = BashOperator(
-        task_id="run_dbt_task",
-        bash_command= "cd /opt/airflow/dbt/dbt_dwh && dbt deps && dbt run --profiles-dir ."
-    )"""
 
     finish = DummyOperator(task_id='finish')
 
     start >> add_gcp_conn_task >> \
     download_dataset_task >>  spark_cleansing_task >> \
-    local_to_gcs_task >> load_gcs_to_bq_task >> finish 
+    format_to_parquet_task >> local_to_gcs_task >> \
+    load_gcs_to_bq_task >> finish 

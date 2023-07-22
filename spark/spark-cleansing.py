@@ -109,7 +109,8 @@ print("######################################")
 print("SAVE DATA")
 print("######################################")
 
-df_transform5 = df_transform4.toPandas().to_csv("/opt/airflow/application_record.csv", index=False)
+#df_transform4.toPandas().to_csv("/opt/airflow/bank_marketing.csv", index=False)
+df_transform4.toPandas().to_csv("/opt/airflow/bank_marketing.csv", index=False)
 
 print("######################################")
 print("SUCCESS")

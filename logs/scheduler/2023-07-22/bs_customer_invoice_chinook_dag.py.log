@@ -1,0 +1,64 @@
+[2023-07-22T11:19:39.450+0000] {processor.py:157} INFO - Started process (PID=258) to work on /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:19:39.462+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_customer_invoice_chinook_dag.py for tasks to queue
+[2023-07-22T11:19:39.465+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:19:39.465+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:19:39.743+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:19:39.660+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_customer_invoice_chinook_dag.py", line 15, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:19:39.746+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:19:39.869+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_customer_invoice_chinook_dag.py took 0.440 seconds
+[2023-07-22T11:20:10.371+0000] {processor.py:157} INFO - Started process (PID=293) to work on /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:10.372+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_customer_invoice_chinook_dag.py for tasks to queue
+[2023-07-22T11:20:10.377+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:10.377+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:10.429+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:10.423+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_customer_invoice_chinook_dag.py", line 15, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:20:10.431+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:10.455+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_customer_invoice_chinook_dag.py took 0.098 seconds
+[2023-07-22T11:20:40.973+0000] {processor.py:157} INFO - Started process (PID=318) to work on /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:40.975+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_customer_invoice_chinook_dag.py for tasks to queue
+[2023-07-22T11:20:40.976+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:40.976+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:41.010+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:41.007+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_customer_invoice_chinook_dag.py", line 15, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:20:41.013+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:20:41.034+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_customer_invoice_chinook_dag.py took 0.066 seconds
+[2023-07-22T11:21:11.188+0000] {processor.py:157} INFO - Started process (PID=343) to work on /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:21:11.190+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_customer_invoice_chinook_dag.py for tasks to queue
+[2023-07-22T11:21:11.194+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:21:11.193+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:21:11.230+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:21:11.226+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_customer_invoice_chinook_dag.py", line 15, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:21:11.232+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_customer_invoice_chinook_dag.py
+[2023-07-22T11:21:11.250+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_customer_invoice_chinook_dag.py took 0.067 seconds

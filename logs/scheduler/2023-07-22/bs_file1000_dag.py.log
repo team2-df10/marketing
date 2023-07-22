@@ -1,0 +1,64 @@
+[2023-07-22T11:19:40.608+0000] {processor.py:157} INFO - Started process (PID=261) to work on /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:19:40.653+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_file1000_dag.py for tasks to queue
+[2023-07-22T11:19:40.658+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:19:40.658+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:19:40.844+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:19:40.834+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_file1000_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_file1000_dag.py", line 14, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:19:40.847+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:19:40.962+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_file1000_dag.py took 0.394 seconds
+[2023-07-22T11:20:11.603+0000] {processor.py:157} INFO - Started process (PID=296) to work on /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:11.605+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_file1000_dag.py for tasks to queue
+[2023-07-22T11:20:11.608+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:11.607+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:11.637+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:11.635+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_file1000_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_file1000_dag.py", line 14, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:20:11.638+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:11.655+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_file1000_dag.py took 0.058 seconds
+[2023-07-22T11:20:42.162+0000] {processor.py:157} INFO - Started process (PID=321) to work on /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:42.164+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_file1000_dag.py for tasks to queue
+[2023-07-22T11:20:42.165+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:42.165+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:42.253+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:20:42.249+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_file1000_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_file1000_dag.py", line 14, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:20:42.257+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:20:42.280+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_file1000_dag.py took 0.124 seconds
+[2023-07-22T11:21:13.343+0000] {processor.py:157} INFO - Started process (PID=355) to work on /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:21:13.352+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/bs_file1000_dag.py for tasks to queue
+[2023-07-22T11:21:13.355+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:21:13.354+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:21:13.408+0000] {logging_mixin.py:150} INFO - [2023-07-22T11:21:13.403+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/bs_file1000_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/bs_file1000_dag.py", line 14, in <module>
+    DATASET_ID = Variable.get("DATASET_ID")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 142, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable DATASET_ID does not exist'
+[2023-07-22T11:21:13.411+0000] {processor.py:838} WARNING - No viable dags retrieved from /opt/airflow/dags/bs_file1000_dag.py
+[2023-07-22T11:21:13.440+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/bs_file1000_dag.py took 0.111 seconds
