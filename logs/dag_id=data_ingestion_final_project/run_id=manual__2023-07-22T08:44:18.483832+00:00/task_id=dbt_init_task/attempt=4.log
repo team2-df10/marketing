@@ -1,0 +1,26 @@
+[2023-07-22T09:10:54.255+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [queued]>
+[2023-07-22T09:10:54.277+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [queued]>
+[2023-07-22T09:10:54.278+0000] {taskinstance.py:1308} INFO - Starting attempt 4 of 4
+[2023-07-22T09:10:54.310+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): dbt_init_task> on 2023-07-22 08:44:18.483832+00:00
+[2023-07-22T09:10:54.338+0000] {standard_task_runner.py:57} INFO - Started process 83 to run task
+[2023-07-22T09:10:54.343+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_final_project', 'dbt_init_task', 'manual__2023-07-22T08:44:18.483832+00:00', '--job-id', '93', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_final_project.py', '--cfg-path', '/tmp/tmpia65fnyz']
+[2023-07-22T09:10:54.352+0000] {standard_task_runner.py:85} INFO - Job 93: Subtask dbt_init_task
+[2023-07-22T09:10:54.399+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-07-22T09:10:54.529+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [running]> on host 06435c559ff5
+[2023-07-22T09:10:54.750+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_final_project' AIRFLOW_CTX_TASK_ID='dbt_init_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-22T08:44:18.483832+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-22T08:44:18.483832+00:00'
+[2023-07-22T09:10:54.752+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-07-22T09:10:54.757+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/dbt/dbt/bank_campaign_dwh && dbt deps && dbt seed --profiles-dir .']
+[2023-07-22T09:10:54.831+0000] {subprocess.py:86} INFO - Output:
+[2023-07-22T09:10:54.840+0000] {subprocess.py:93} INFO - /bin/bash: line 1: cd: /opt/***/dbt/dbt/bank_campaign_dwh: No such file or directory
+[2023-07-22T09:10:54.857+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2023-07-22T09:10:54.913+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2023-07-22T09:10:54.948+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=data_ingestion_final_project, task_id=dbt_init_task, execution_date=20230722T084418, start_date=20230722T091054, end_date=20230722T091054
+[2023-07-22T09:10:55.104+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 93 for task dbt_init_task (Bash command failed. The command returned a non-zero exit code 1.; 83)
+[2023-07-22T09:10:55.156+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-22T09:10:55.235+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

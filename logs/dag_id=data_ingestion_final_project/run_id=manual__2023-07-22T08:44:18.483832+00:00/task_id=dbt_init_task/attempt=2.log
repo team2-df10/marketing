@@ -1,0 +1,53 @@
+[2023-07-22T09:02:39.526+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [queued]>
+[2023-07-22T09:02:39.553+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [queued]>
+[2023-07-22T09:02:39.556+0000] {taskinstance.py:1308} INFO - Starting attempt 2 of 3
+[2023-07-22T09:02:39.580+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): dbt_init_task> on 2023-07-22 08:44:18.483832+00:00
+[2023-07-22T09:02:39.594+0000] {standard_task_runner.py:57} INFO - Started process 2704 to run task
+[2023-07-22T09:02:39.603+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_final_project', 'dbt_init_task', 'manual__2023-07-22T08:44:18.483832+00:00', '--job-id', '89', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_final_project.py', '--cfg-path', '/tmp/tmp0l_uwoqk']
+[2023-07-22T09:02:39.608+0000] {standard_task_runner.py:85} INFO - Job 89: Subtask dbt_init_task
+[2023-07-22T09:02:39.636+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-07-22T09:02:39.710+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion_final_project.dbt_init_task manual__2023-07-22T08:44:18.483832+00:00 [running]> on host 06435c559ff5
+[2023-07-22T09:02:39.841+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_final_project' AIRFLOW_CTX_TASK_ID='dbt_init_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-22T08:44:18.483832+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-22T08:44:18.483832+00:00'
+[2023-07-22T09:02:39.844+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-07-22T09:02:39.846+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/dbt/credit_card_dwh && dbt deps && dbt seed --profiles-dir .']
+[2023-07-22T09:02:39.870+0000] {subprocess.py:86} INFO - Output:
+[2023-07-22T09:02:43.566+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2023-07-22T09:02:43.571+0000] {subprocess.py:93} INFO -   File "/home/***/.local/bin/dbt", line 8, in <module>
+[2023-07-22T09:02:43.572+0000] {subprocess.py:93} INFO -     sys.exit(cli())
+[2023-07-22T09:02:43.575+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 1130, in __call__
+[2023-07-22T09:02:43.575+0000] {subprocess.py:93} INFO -     return self.main(*args, **kwargs)
+[2023-07-22T09:02:43.576+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 1055, in main
+[2023-07-22T09:02:43.576+0000] {subprocess.py:93} INFO -     rv = self.invoke(ctx)
+[2023-07-22T09:02:43.578+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 1655, in invoke
+[2023-07-22T09:02:43.579+0000] {subprocess.py:93} INFO -     sub_ctx = cmd.make_context(cmd_name, args, parent=ctx)
+[2023-07-22T09:02:43.580+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 920, in make_context
+[2023-07-22T09:02:43.581+0000] {subprocess.py:93} INFO -     self.parse_args(ctx, args)
+[2023-07-22T09:02:43.583+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 1378, in parse_args
+[2023-07-22T09:02:43.583+0000] {subprocess.py:93} INFO -     value, args = param.handle_parse_result(ctx, opts, args)
+[2023-07-22T09:02:43.585+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 2356, in handle_parse_result
+[2023-07-22T09:02:43.586+0000] {subprocess.py:93} INFO -     value, source = self.consume_value(ctx, opts)
+[2023-07-22T09:02:43.587+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 2890, in consume_value
+[2023-07-22T09:02:43.588+0000] {subprocess.py:93} INFO -     value, source = super().consume_value(ctx, opts)
+[2023-07-22T09:02:43.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 2251, in consume_value
+[2023-07-22T09:02:43.589+0000] {subprocess.py:93} INFO -     value = self.get_default(ctx)
+[2023-07-22T09:02:43.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 2824, in get_default
+[2023-07-22T09:02:43.592+0000] {subprocess.py:93} INFO -     return super().get_default(ctx, call=call)
+[2023-07-22T09:02:43.593+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/click/core.py", line 2229, in get_default
+[2023-07-22T09:02:43.596+0000] {subprocess.py:93} INFO -     value = value()
+[2023-07-22T09:02:43.597+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/resolvers.py", line 13, in default_profiles_dir
+[2023-07-22T09:02:43.602+0000] {subprocess.py:93} INFO -     return Path.cwd() if (Path.cwd() / "profiles.yml").exists() else Path.home() / ".dbt"
+[2023-07-22T09:02:43.603+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.7/pathlib.py", line 1081, in cwd
+[2023-07-22T09:02:43.606+0000] {subprocess.py:93} INFO -     return cls(os.getcwd())
+[2023-07-22T09:02:43.608+0000] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory
+[2023-07-22T09:02:43.833+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2023-07-22T09:02:43.852+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2023-07-22T09:02:43.858+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=data_ingestion_final_project, task_id=dbt_init_task, execution_date=20230722T084418, start_date=20230722T090239, end_date=20230722T090243
+[2023-07-22T09:02:43.876+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 89 for task dbt_init_task (Bash command failed. The command returned a non-zero exit code 1.; 2704)
+[2023-07-22T09:02:43.893+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-22T09:02:43.925+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

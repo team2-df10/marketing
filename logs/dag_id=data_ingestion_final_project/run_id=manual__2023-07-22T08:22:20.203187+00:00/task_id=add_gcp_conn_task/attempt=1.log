@@ -1,0 +1,30 @@
+[2023-07-22T08:22:24.656+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_final_project.add_gcp_conn_task manual__2023-07-22T08:22:20.203187+00:00 [queued]>
+[2023-07-22T08:22:24.667+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_final_project.add_gcp_conn_task manual__2023-07-22T08:22:20.203187+00:00 [queued]>
+[2023-07-22T08:22:24.668+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2023-07-22T08:22:24.685+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): add_gcp_conn_task> on 2023-07-22 08:22:20.203187+00:00
+[2023-07-22T08:22:24.694+0000] {standard_task_runner.py:57} INFO - Started process 447 to run task
+[2023-07-22T08:22:24.699+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_final_project', 'add_gcp_conn_task', 'manual__2023-07-22T08:22:20.203187+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_final_project.py', '--cfg-path', '/tmp/tmp11bi2kth']
+[2023-07-22T08:22:24.703+0000] {standard_task_runner.py:85} INFO - Job 68: Subtask add_gcp_conn_task
+[2023-07-22T08:22:24.719+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-07-22T08:22:24.764+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion_final_project.add_gcp_conn_task manual__2023-07-22T08:22:20.203187+00:00 [running]> on host 06435c559ff5
+[2023-07-22T08:22:24.860+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_final_project' AIRFLOW_CTX_TASK_ID='add_gcp_conn_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-22T08:22:20.203187+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-22T08:22:20.203187+00:00'
+[2023-07-22T08:22:24.862+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-07-22T08:22:24.882+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/data_ingestion_final_project.py", line 108, in add_gcp_connection
+    if BaseHook.get_connection(new_conn.conn_id) is not None:
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/base.py", line 72, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/connection.py", line 463, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `my_gcp_conn` isn't defined
+[2023-07-22T08:22:24.888+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=data_ingestion_final_project, task_id=add_gcp_conn_task, execution_date=20230722T082220, start_date=20230722T082224, end_date=20230722T082224
+[2023-07-22T08:22:24.903+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 68 for task add_gcp_conn_task (The conn_id `my_gcp_conn` isn't defined; 447)
+[2023-07-22T08:22:24.951+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-22T08:22:24.993+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
