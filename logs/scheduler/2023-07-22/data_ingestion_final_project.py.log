@@ -3425,3 +3425,38 @@ SyntaxError: invalid syntax
 [2023-07-22T09:41:16.073+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:41:16.073+0000] {dag.py:2742} INFO - Sync 1 DAGs
 [2023-07-22T09:41:16.115+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:41:16.112+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
 [2023-07-22T09:41:16.160+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.187 seconds
+[2023-07-22T09:41:46.376+0000] {processor.py:157} INFO - Started process (PID=1372) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:41:46.379+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:41:46.383+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:41:46.383+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:41:46.444+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:41:46.492+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:41:46.492+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:41:46.535+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:41:46.535+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:41:46.578+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.214 seconds
+[2023-07-22T09:42:16.662+0000] {processor.py:157} INFO - Started process (PID=1400) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:16.665+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:42:16.668+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:16.668+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:16.717+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:16.756+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:16.756+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:42:16.794+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:16.794+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:42:16.834+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.180 seconds
+[2023-07-22T09:42:46.968+0000] {processor.py:157} INFO - Started process (PID=1419) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:46.971+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:42:46.976+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:46.974+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:47.029+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:42:47.085+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:47.085+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:42:47.134+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:42:47.134+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:42:47.180+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.220 seconds
+[2023-07-22T09:43:17.471+0000] {processor.py:157} INFO - Started process (PID=1437) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:17.474+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:43:17.486+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:17.485+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:17.571+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:17.628+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:17.628+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:43:17.705+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:17.703+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:43:17.776+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.320 seconds
+[2023-07-22T09:43:48.196+0000] {processor.py:157} INFO - Started process (PID=1456) to work on /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:48.202+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/data_ingestion_final_project.py for tasks to queue
+[2023-07-22T09:43:48.218+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:48.217+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:48.319+0000] {processor.py:836} INFO - DAG(s) dict_keys(['data_ingestion_final_project']) retrieved from /opt/airflow/dags/data_ingestion_final_project.py
+[2023-07-22T09:43:48.362+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:48.362+0000] {dag.py:2742} INFO - Sync 1 DAGs
+[2023-07-22T09:43:48.399+0000] {logging_mixin.py:150} INFO - [2023-07-22T09:43:48.399+0000] {dag.py:3508} INFO - Setting next_dagrun for data_ingestion_final_project to 2023-07-23T00:00:00+00:00, run_after=2023-07-30T00:00:00+00:00
+[2023-07-22T09:43:48.428+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/data_ingestion_final_project.py took 0.254 seconds
