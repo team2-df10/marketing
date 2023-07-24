@@ -5012,3 +5012,69 @@ File Path                                          PID    Runtime      # DAGs   
 /opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.49s           2023-07-22T11:38:18
 /opt/airflow/dags/data_ingest_pq.py                                         1           0  0.52s           2023-07-22T11:38:18
 ================================================================================
+[2023-07-22T11:38:48.874+0000] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-22T11:38:48.892+0000] {manager.py:761} INFO - There are 2 files in /opt/airflow/dags
+[2023-07-22T11:39:14.085+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.26s           2023-07-22T11:38:48
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.31s           2023-07-22T11:38:48
+================================================================================
+[2023-07-22T11:39:44.658+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.37s           2023-07-22T11:39:19
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.36s           2023-07-22T11:39:19
+================================================================================
+[2023-07-22T11:40:15.026+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.20s           2023-07-22T11:39:49
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.20s           2023-07-22T11:39:49
+================================================================================
+[2023-07-22T11:40:45.520+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.34s           2023-07-22T11:40:20
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.34s           2023-07-22T11:40:20
+================================================================================
+[2023-07-22T11:41:16.128+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.44s           2023-07-22T11:40:51
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.38s           2023-07-22T11:40:50
+================================================================================
+[2023-07-22T11:41:46.325+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.19s           2023-07-22T11:41:21
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.20s           2023-07-22T11:41:21
+================================================================================
+[2023-07-22T11:42:16.825+0000] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/data_ingestion_final_project.py                           1           0  0.19s           2023-07-22T11:41:51
+/opt/airflow/dags/data_ingest_pq.py                                         1           0  0.19s           2023-07-22T11:41:51
+================================================================================
+[2023-07-22T11:42:42.263+0000] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15

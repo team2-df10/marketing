@@ -209,11 +209,6 @@ with DAG(
             ],
     )
     
-    #bigquery_raw_task = BigQueryExecuteQueryOperator(
-        #task_id="bigquery_raw_task",
-        #sql=query,
-        #use_legacy_sql=False,
-    #)
 
     """dbt_init_task = BashOperator(
         task_id="dbt_init_task",

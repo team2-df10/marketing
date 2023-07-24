@@ -28,3 +28,9 @@ variable "BQ_TABLE" {
   type = string
   default = "final_project_table"
 }
+
+variable "BQ_TABLE_2" {
+  description = "BigQuery table that raw data (from kafka producer) will be written to in BQ_DATASET"
+  type = string
+  default = "final_project_kafka_table"
+}
