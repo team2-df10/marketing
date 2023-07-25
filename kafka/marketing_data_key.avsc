@@ -4,7 +4,7 @@
   "namespace": "com.example.avro",
   "fields": [
     {
-      "name": "ID",
+      "name": "client_id",
       "type": "int"
     }
   ]

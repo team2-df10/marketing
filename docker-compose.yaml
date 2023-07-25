@@ -18,7 +18,7 @@ x-airflow-common:
     GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/service-account.json
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/service-account.json'
     # DBT_PROFILES_DIR: /opt/airflow/dbt
-    # TODO: Please change GCP_PROJECT_ID & GCP_GCS_BUCKET, as per your config
+    # Note : Please add your own GCP_PROJECT_ID and GCP_GCS_BUCKET as your configuration
     GCP_PROJECT_ID: 'snappy-lattice-393408'
     GCP_GCS_BUCKET: 'final_project_data_lake_snappy-lattice-393408'
     
