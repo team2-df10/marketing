@@ -1,18 +1,29 @@
 from confluent_kafka.avro import AvroConsumer
 from google.cloud import bigquery
-import os 
+from google.api_core.exceptions import NotFound
+import os
+from confluent_kafka import KafkaError
 
 # Set Google Cloud credentials
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/azril/marketing/kafka/service-account.json"
 
-dataset_name = 'final_project'
-table_name = 'marketing_data_table_kafka'
-
-client = bigquery.Client()
-client.create_dataset(dataset_name, exists_ok=True)
-dataset = client.dataset(dataset_name)
-
-schema = [
+class Consumer:
+    def __init__(self, config, dataset_name, table_name):
+        """
+        Initialize with Kafka consumer configuration, and BigQuery dataset and table names.
+        Subscribe the consumer to the Kafka topic and setup the BigQuery table.
+        """
+        self.config = config
+        self.consumer = AvroConsumer(self.config)
+        self.consumer.subscribe(["marketing_data"])
+        self.client = bigquery.Client()
+        self.table = self.setup_bigquery_table(dataset_name, table_name)
+        
+    def setup_bigquery_table(self, dataset_name, table_name):
+        """
+        Retrieves the existing BigQuery table based on the provided dataset and table name.
+        """
+        schema = [
             bigquery.SchemaField('client_id', 'INT64'),
             bigquery.SchemaField('age', 'INT64'),
             bigquery.SchemaField('job', 'STRING'),
@@ -37,39 +48,59 @@ schema = [
             bigquery.SchemaField('subcribed', 'STRING')
         ]
 
-table_ref = bigquery.TableReference(dataset, table_name)
-table = bigquery.Table(table_ref, schema=schema)
-client.create_table(table, exists_ok=True)
-
-def read_messages():
-    consumer_config = {"bootstrap.servers": "localhost:9092",
-                       "schema.registry.url": "http://localhost:8081",
-                       "group.id": "application_record.avro.consumer.1",
-                       "auto.offset.reset": "earliest"}
-
-    consumer = AvroConsumer(consumer_config)
-    consumer.subscribe(["marketing_data"])
-
-    while True:
+        dataset_ref = self.client.dataset(dataset_name)
+        table_ref = dataset_ref.table(table_name)
         try:
-            message = consumer.poll(5)
-        except Exception as e:
-            print(f"Exception while trying to poll messages - {e}")
-        else:
-            if message is not None:
-                print(f"Successfully poll a record from "
-                      f"Kafka topic: {message.topic()}, partition: {message.partition()}, offset: {message.offset()}\n"
+            table = self.client.get_table(table_ref)  # Make an API request.
+            print(f"Table {table_name} already exists.")
+        except NotFound:
+            print(f"Table {table_name} is not found. Creating a new one.")
+            table = bigquery.Table(table_ref, schema=schema)
+            table = self.client.create_table(table)  # Make an API request.
+            print(f"Created table {table_name}.")
+        
+        return table
+
+    def read_messages(self):
+        """
+        Continuously read messages from the Kafka topic and insert them into the BigQuery table.
+        """
+        while True:
+            try:
+                # Poll the message from Kafka
+                message = self.consumer.poll(1.0)
+                if message is None:
+                    continue
+                if message.error():
+                    if message.error().code() == KafkaError._PARTITION_EOF:
+                        print(f"Reached end of partition {message.topic()}/{message.partition()}")
+                    else:
+                        print(f"Consumer error: {message.error()}")
+                    continue
+                
+                print(f"Received record from Kafka topic: {message.topic()}, partition: {message.partition()}, offset: {message.offset()}\n"
                       f"message key: {message.key()} || message value: {message.value()}")
-                consumer.commit()
-                # INSERT STREAM TO BIGQUERY
-                row_to_insert = {field.name: message.value().get(field.name) for field in table.schema}
-                errors = client.insert_rows(table, [row_to_insert])
+                
+                row_to_insert = {field.name: message.value().get(field.name) for field in self.table.schema}
+                errors = self.client.insert_rows(self.table, [row_to_insert])
+                if errors:
+                    print(f"Errors occurred while inserting rows: {errors}")
+                else:
+                    self.consumer.commit()
 
-            else:
-                print("No new messages at this point. Try again later.")
+            except Exception as e:
+                print(f"Exception while inserting into BigQuery: {e}")
+                continue
 
-    consumer.close()
-
+        self.consumer.close()
 
 if __name__ == "__main__":
-    read_messages()
+    config = {"bootstrap.servers": "localhost:9092",
+              "schema.registry.url": "http://localhost:8081",
+              "group.id": "marketingData.avro.consumer.1",
+              "auto.offset.reset": "earliest"} # Fill in your Kafka configuration details here
+    # Fill in your BigQuery dataset and table names here
+    dataset_name = 'final_project'
+    table_name = 'marketing_data_table_kafka'
+    consumer = Consumer(config, dataset_name, table_name)
+    consumer.read_messages()
