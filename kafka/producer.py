@@ -75,7 +75,7 @@ class Producer:
                  "cons_conf_idx": float(row[18]),
                  "euribor3m": float(row[19]),
                  "nr_employed": float(row[20]),
-                 "subcribed": row[21]
+                 "subscribed": row[21]
                  }
         return key, value
 

@@ -59,7 +59,7 @@ df_transform2 = df_transform1.withColumnRenamed('emp.var.rate', 'emp_var_rate') 
        .withColumnRenamed('cons.conf.idx', 'cons_conf_idx') \
        .withColumnRenamed('nr.employed', 'nr_employed') \
        .withColumnRenamed('default', 'credit') \
-       .withColumnRenamed('y', 'subcribed')
+       .withColumnRenamed('y', 'subscribed')
 
 ####################################
 # Cleanse Null Data

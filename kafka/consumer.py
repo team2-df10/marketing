@@ -45,7 +45,7 @@ class Consumer:
             bigquery.SchemaField('cons_price_idx', 'FLOAT64'),
             bigquery.SchemaField('euribor3m', 'FLOAT64'),
             bigquery.SchemaField('nr_employed', 'INT64'),
-            bigquery.SchemaField('subcribed', 'STRING')
+            bigquery.SchemaField('subscribed', 'STRING')
         ]
 
         dataset_ref = self.client.dataset(dataset_name)

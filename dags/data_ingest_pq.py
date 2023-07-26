@@ -28,9 +28,6 @@ path_to_local_home = "/opt/airflow"
 parquet_file = dataset_file.replace('.csv', '.parquet')
 destination_table = os.environ.get("BIGQUERY_TABLE", 'marketing')
 
-#dbt_loc = "/opt/airflow/dbt"
-#spark_master = "spark://spark:7077"
-
 def format_to_parquet(src_file):
     if not src_file.endswith('.csv'):
         logging.error("Can only accept source files in CSV format, for the moment")
@@ -109,8 +106,8 @@ with DAG(
 
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
-        #bash_command="gdrive_connect.sh"
-        bash_command=f"curl -sSL {dataset_url} > '{path_to_local_home}/{dataset_file}'"           # for smaller files
+        bash_command="gdrive_connect.sh"
+        #bash_command=f"curl -sSL {dataset_url} > '{path_to_local_home}/{dataset_file}'"           # for smaller files
     )
 
     spark_cleansing_task = BashOperator(
@@ -139,7 +136,7 @@ with DAG(
     load_gcs_to_bq_task = GCSToBigQueryOperator(
         task_id='load_gcs_to_bq',
         bucket=BUCKET,
-        source_objects=[f"raw/{dataset_file}"],
+        source_objects=[f"raw/{parquet_file}"],
         destination_project_dataset_table=f"{PROJECT_ID}.{BIGQUERY_DATASET}.{destination_table}",
         skip_leading_rows=1,
         source_format= 'PARQUET',
@@ -172,10 +169,21 @@ with DAG(
             ],
     )
     
+    dbt_init_task = BashOperator(
+        task_id="dbt_init_task",
+        bash_command= "cd /opt/airflow/dbt/marketing_dwh && dbt deps && dbt seed --profiles-dir ."
+    )
+
+    run_dbt_task = BashOperator(
+        task_id="run_dbt_task",
+        bash_command= "cd /opt/airflow/dbt/marketing_dwh && dbt deps && dbt run --profiles-dir ."
+    )
+
 
     finish = DummyOperator(task_id='finish')
 
     start >> add_gcp_conn_task >> \
     download_dataset_task >>  spark_cleansing_task >> \
     format_to_parquet_task >> local_to_gcs_task >> \
-    load_gcs_to_bq_task >> finish 
+    load_gcs_to_bq_task >> dbt_init_task >> \
+    run_dbt_task >> finish 
