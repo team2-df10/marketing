@@ -1,0 +1,51 @@
+[2023-07-26T17:35:41.962+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [queued]>
+[2023-07-26T17:35:42.001+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [queued]>
+[2023-07-26T17:35:42.010+0000] {taskinstance.py:1308} INFO - Starting attempt 8 of 8
+[2023-07-26T17:35:42.180+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): dbt_init_task> on 2023-07-26 16:09:45.132166+00:00
+[2023-07-26T17:35:42.248+0000] {standard_task_runner.py:57} INFO - Started process 339 to run task
+[2023-07-26T17:35:42.335+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion-pq', 'dbt_init_task', 'manual__2023-07-26T16:09:45.132166+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/data_ingest_pq.py', '--cfg-path', '/tmp/tmpryv8kvxu']
+[2023-07-26T17:35:42.369+0000] {standard_task_runner.py:85} INFO - Job 38: Subtask dbt_init_task
+[2023-07-26T17:35:42.558+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-07-26T17:35:43.075+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [running]> on host e984f88ca6c0
+[2023-07-26T17:35:43.855+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion-pq' AIRFLOW_CTX_TASK_ID='dbt_init_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-26T16:09:45.132166+00:00' AIRFLOW_CTX_TRY_NUMBER='8' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-26T16:09:45.132166+00:00'
+[2023-07-26T17:35:43.874+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-07-26T17:35:43.877+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/dbt/marketing_dwh && dbt deps && dbt seed --profiles-dir .']
+[2023-07-26T17:35:43.992+0000] {subprocess.py:86} INFO - Output:
+[2023-07-26T17:35:49.224+0000] {subprocess.py:93} INFO - [0m17:35:49  Running with dbt=1.5.3
+[2023-07-26T17:35:49.279+0000] {subprocess.py:93} INFO - [0m17:35:49  Encountered an error:
+[2023-07-26T17:35:49.280+0000] {subprocess.py:93} INFO - [Errno 13] Permission denied: 'dbt_packages'
+[2023-07-26T17:35:49.285+0000] {subprocess.py:93} INFO - [0m17:35:49  Traceback (most recent call last):
+[2023-07-26T17:35:49.285+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/requires.py", line 86, in wrapper
+[2023-07-26T17:35:49.286+0000] {subprocess.py:93} INFO -     result, success = func(*args, **kwargs)
+[2023-07-26T17:35:49.288+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/requires.py", line 71, in wrapper
+[2023-07-26T17:35:49.289+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2023-07-26T17:35:49.290+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/requires.py", line 125, in wrapper
+[2023-07-26T17:35:49.292+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2023-07-26T17:35:49.292+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/requires.py", line 168, in wrapper
+[2023-07-26T17:35:49.293+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2023-07-26T17:35:49.295+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/cli/main.py", line 437, in deps
+[2023-07-26T17:35:49.298+0000] {subprocess.py:93} INFO -     results = task.run()
+[2023-07-26T17:35:49.299+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/task/deps.py", line 63, in run
+[2023-07-26T17:35:49.300+0000] {subprocess.py:93} INFO -     system.make_directory(self.project.packages_install_path)
+[2023-07-26T17:35:49.300+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.7/functools.py", line 840, in wrapper
+[2023-07-26T17:35:49.301+0000] {subprocess.py:93} INFO -     return dispatch(args[0].__class__)(*args, **kw)
+[2023-07-26T17:35:49.301+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/clients/system.py", line 128, in _
+[2023-07-26T17:35:49.306+0000] {subprocess.py:93} INFO -     raise e
+[2023-07-26T17:35:49.309+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/dbt/clients/system.py", line 122, in _
+[2023-07-26T17:35:49.310+0000] {subprocess.py:93} INFO -     os.makedirs(path)
+[2023-07-26T17:35:49.311+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.7/os.py", line 223, in makedirs
+[2023-07-26T17:35:49.314+0000] {subprocess.py:93} INFO -     mkdir(name, mode)
+[2023-07-26T17:35:49.315+0000] {subprocess.py:93} INFO - PermissionError: [Errno 13] Permission denied: 'dbt_packages'
+[2023-07-26T17:35:49.316+0000] {subprocess.py:93} INFO - 
+[2023-07-26T17:35:51.368+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2023-07-26T17:35:51.394+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2023-07-26T17:35:51.402+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=data_ingestion-pq, task_id=dbt_init_task, execution_date=20230726T160945, start_date=20230726T173541, end_date=20230726T173551
+[2023-07-26T17:35:51.443+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 38 for task dbt_init_task (Bash command failed. The command returned a non-zero exit code 2.; 339)
+[2023-07-26T17:35:51.499+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-26T17:35:51.526+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

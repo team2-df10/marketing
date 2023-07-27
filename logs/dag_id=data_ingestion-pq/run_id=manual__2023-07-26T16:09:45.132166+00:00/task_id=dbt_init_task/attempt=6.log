@@ -1,0 +1,25 @@
+[2023-07-26T16:55:22.858+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [queued]>
+[2023-07-26T16:55:22.876+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [queued]>
+[2023-07-26T16:55:22.877+0000] {taskinstance.py:1308} INFO - Starting attempt 6 of 6
+[2023-07-26T16:55:22.902+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): dbt_init_task> on 2023-07-26 16:09:45.132166+00:00
+[2023-07-26T16:55:22.910+0000] {standard_task_runner.py:57} INFO - Started process 2477 to run task
+[2023-07-26T16:55:22.917+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion-pq', 'dbt_init_task', 'manual__2023-07-26T16:09:45.132166+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/data_ingest_pq.py', '--cfg-path', '/tmp/tmp94bmn4yd']
+[2023-07-26T16:55:22.922+0000] {standard_task_runner.py:85} INFO - Job 32: Subtask dbt_init_task
+[2023-07-26T16:55:22.951+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-07-26T16:55:23.023+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion-pq.dbt_init_task manual__2023-07-26T16:09:45.132166+00:00 [running]> on host e35a35833287
+[2023-07-26T16:55:23.162+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion-pq' AIRFLOW_CTX_TASK_ID='dbt_init_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-26T16:09:45.132166+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-26T16:09:45.132166+00:00'
+[2023-07-26T16:55:23.164+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-07-26T16:55:23.169+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/dbt/marketing_dwh && dbt deps && dbt seed --profiles-dir .']
+[2023-07-26T16:55:23.227+0000] {subprocess.py:86} INFO - Output:
+[2023-07-26T16:55:30.328+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2023-07-26T16:55:30.346+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2023-07-26T16:55:30.354+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=data_ingestion-pq, task_id=dbt_init_task, execution_date=20230726T160945, start_date=20230726T165522, end_date=20230726T165530
+[2023-07-26T16:55:30.377+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 32 for task dbt_init_task (Bash command failed. The command returned a non-zero exit code 2.; 2477)
+[2023-07-26T16:55:30.433+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-26T16:55:30.476+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

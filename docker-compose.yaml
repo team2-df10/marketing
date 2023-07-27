@@ -26,7 +26,7 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    - ./dbt/credit_card_dwh:/opt/airflow/dbt/credit_card_dwh
+    - ./dbt/marketing_dwh:/opt/airflow/dbt/marketing_dwh
     - ./spark:/opt/airflow/spark
     - ./datasets:/opt/airflow/datasets
     - ~/.dbt:/home/airflow/.dbt:ro

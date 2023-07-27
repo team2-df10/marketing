@@ -4,10 +4,10 @@ marketing_dwh:
       dataset: final_project
       fixed_retries: 1
       keyfile: /opt/airflow/service-account.json
-      location: us
+      location: asia-southeast2
       method: service-account
       priority: interactive
-      project: "data-fellowship-9-project"
+      project: snappy-lattice-393408
       threads: 4
       timeout_seconds: 300
       type: bigquery
@@ -15,10 +15,10 @@ marketing_dwh:
       dataset: final_project
       fixed_retries: 1
       keyfile: /opt/airflow/service-account.json
-      location: us
+      location: asia-southeast2
       method: service-account
       priority: interactive
-      project: "data-fellowship-9-project"
+      project: snappy-lattice-393408
       threads: 4
       timeout_seconds: 300
       type: bigquery

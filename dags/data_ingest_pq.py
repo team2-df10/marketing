@@ -171,12 +171,12 @@ with DAG(
     
     dbt_init_task = BashOperator(
         task_id="dbt_init_task",
-        bash_command= "cd /opt/airflow/dbt/marketing_dwh && dbt deps && dbt seed --profiles-dir ."
+        bash_command=f" cd /opt/airflow/dbt/marketing_dwh" + " && dbt deps --profiles-dir && dbt seed --profiles-dir"
     )
 
     run_dbt_task = BashOperator(
         task_id="run_dbt_task",
-        bash_command= "cd /opt/airflow/dbt/marketing_dwh && dbt deps && dbt run --profiles-dir ."
+        bash_command=f" cd /opt/airflow/dbt/marketing_dwh" + "&& dbt run --profiles-dir"
     )
 
 

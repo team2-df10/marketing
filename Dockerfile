@@ -41,3 +41,4 @@ RUN pip install apache-airflow-providers-apache-spark
 RUN pip install airflow-dbt-python[bigquery]
 
 COPY --chown=airflow:root ./dags /opt/airflow/dags
+COPY --chown=airflow:airflow ./dbt/marketing_dwh /opt/airflow/dbt/marketing_dwh
