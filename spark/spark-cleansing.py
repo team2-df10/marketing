@@ -90,17 +90,7 @@ udf_month = udf(lambda x: month_dict.get(x), IntegerType())
 udf_day = udf(lambda x: day_dict.get(x), IntegerType())
 
 df_transform4 = df_transform4.withColumn("month", udf_month(col("month")))
-df_transform4 = df_transform4.withColumn("day_of_week", udf_day(col("day_of_week")))
-
-def create_date(year, month, day_of_week):
-    if month >= 5:
-        year = 2021
-    else:
-        year = 2022
-    return datetime.date(year, month, day_of_week)
-
-udf_create_date = udf(create_date, DateType())
-df_transform4 = df_transform4.withColumn('date', udf_create_date(F.lit(2021), 'month', 'day_of_week'))"""
+df_transform4 = df_transform4.withColumn("day_of_week", udf_day(col("day_of_week")))"""
 
 ####################################
 # Save Data
@@ -109,7 +99,6 @@ print("######################################")
 print("SAVE DATA")
 print("######################################")
 
-#df_transform4.toPandas().to_csv("/opt/airflow/bank_marketing.csv", index=False)
 df_transform4.toPandas().to_csv("/opt/airflow/bank_marketing.csv", index=False)
 
 print("######################################")
