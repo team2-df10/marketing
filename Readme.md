@@ -2,7 +2,7 @@
 
 ## Bussiness Understanding
 
-## Credit score is an important metric for banks to rate the credit performance of their applicants. 
+Credit score is an important metric for banks to rate the credit performance of their applicants. 
 They use personal information and financial records of credit card applicants to predict whether these applicants will default in the future or not. 
 From these predictions, the banks will then decide if they want to issue credit cards to these applicants or not. 
 The banks are asking us to create an end-to-end pipeline to help them handle this problem. 
