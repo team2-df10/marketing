@@ -29,7 +29,6 @@ The objectives of this projects are described below:
 - Cloud : Google Cloud Platform
 - Infrastructure as Code : Terraform
 - Containerization : Docker, Docker Compose
-- Compute : Virtual Machine (VM) instance
 - Stream Processing : Kafka
 - Orchestration: Airflow
 - Transformation : Spark, dbt
