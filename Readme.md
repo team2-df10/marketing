@@ -2,24 +2,21 @@
 
 ## Bussiness Understanding
 
-Credit score is an important metric for banks to rate the credit performance of their applicants. 
-They use personal information and financial records of credit card applicants to predict whether these applicants will default in the future or not. 
-From these predictions, the banks will then decide if they want to issue credit cards to these applicants or not. 
-The banks are asking us to create an end-to-end pipeline to help them handle this problem. 
-The original datasets and data dictionary can be found in [here](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction).
+A banking institution conducted campaigns to promote term deposits to its clients, primarily using telemarketing methods like direct phone calls. The target variable (y) indicates whether the client agreed ('yes') or declined ('no') to place a deposit after the campaign. 
+
+The bank aims to identify the features or client statuses that lead to successful offers, making their campaigns more cost and time efficient.
 
 ## Problem Statements
 
-Financial institution is experiencing challenges in managing and analyzing its large volume of credit card applicant data. This makes it difficult to mitigate fraud from credit card applicant data.
+The bank seeks to increase the campaign's efficiency by targeting clients with a higher chance of accepting the deposit offer, using the features from the data.
 
 ## Goal
-To mitigate the possibility of fraud on credit card applicant, a data pipeline is created to facilitate data analysis and reporting application record.
+To understand the target audience for the campaign, a data pipeline is created to facilitate data analysis and reporting application record.
 
 ## Objective
 The objectives of this projects are described below:
-- Design and create end-to-end data pipeline with lambda architecture 
-- Create a data warehouse that can integrate all the credit card applicant data from different sources and provide a single source of truth for the institution's analytics needs
-- Create a visualization dashboard to get insights from the data, which can be used for business decisions and reach goal from this project.
+-Design an end-to-end data pipeline with Lambda Architecture, providing the business intelligence/analyst team with the flexibility to choose between using batched data or real-time streamed data. This ensures efficient data processing and empowers timely decision-making.
+-Create an analytics dashboard to derive meaningful insights and assist the business intelligence/analyst team in making data-driven decisions.
 
 ## Data Pipeline
 ![image](https://user-images.githubusercontent.com/108534539/230115233-4fb03230-53f4-4e25-a70d-11cbd7beb4c8.png)
