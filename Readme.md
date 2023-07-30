@@ -15,7 +15,9 @@ To understand the target audience for the campaign, a data pipeline is created t
 
 ## Objective
 The objectives of this projects are described below:
+
 -Design an end-to-end data pipeline with Lambda Architecture, providing the business intelligence/analyst team with the flexibility to choose between using batched data or real-time streamed data. This ensures efficient data processing and empowers timely decision-making.
+
 -Create an analytics dashboard to derive meaningful insights and assist the business intelligence/analyst team in making data-driven decisions.
 
 ## Data Pipeline
@@ -34,8 +36,11 @@ The objectives of this projects are described below:
 - Data Visualization: Looker
 - Language : Python
 
-## Reproducibility
-![Screenshot (189)](https://user-images.githubusercontent.com/108534539/230118957-612b63c8-4edd-4aaa-9700-92b439ff870a.png)
+## Dataset
+![image](https://github.com/team2-df10/marketing/assets/122470555/72fdc329-4d5d-4322-ad1f-159878467b73)
+![image](https://github.com/team2-df10/marketing/assets/122470555/f84f8718-a859-4c33-86f3-555579583ffa)
+
+
 
 ## Data Visualization Dashboard
 ![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
@@ -47,7 +52,6 @@ The objectives of this projects are described below:
 Data infrastructure we used in this project are entirely built on Google Cloud Platform with more or less 3 weeks of project duration, 
 using this following services:
 - Google Cloud Storage (pay for what you use)
-- Virtual Machine (VM) instance (cost are based Vcpu & memory and storage disk)
 - Google BigQuery (first terrabyte processed are free of charge)
 - Google Looker Studio (cost is based from number of Looker Blocks (data models and visualizations), users, and the number of queries processed per month)
 > Total cost around 6$ out of 300$ free credits that GCP provided
@@ -55,7 +59,7 @@ using this following services:
 ## Project Instruction
 ### Clone this repository and enter the directory
 ```bash
-git clone https://github.com/archie-cm/final-project-credit-card-fraud-pipeline.git && cd final-project-credit-card-fraud-pipeline
+git clone https://github.com/team2-df10/marketing
 ```
 
 
@@ -76,7 +80,7 @@ git clone https://github.com/archie-cm/final-project-credit-card-fraud-pipeline.
 ```
 ### Cloud Resource Provisioning with Terraform
 
-1. Install `gcloud` SDK, `terraform` CLI, and create a GCP project. Then, create a service account with **Storage Admin**, **Storage Pbject Admin**, and **BigQuery Admin** role. Download the JSON credential and store it on `service-account.json`. Open `terraform/main.tf` in a text editor, and fill your GCP's project id.
+1. Install `gcloud` SDK, `terraform` CLI, and create a GCP project. Then, create a service account with **Storage Admin**, **Storage Pbject Admin**, and **BigQuery Admin** role. Download the JSON credential and store it on `service-account.json`. 
 
 2. Enable IAM API and IAM Credential API in GCP.
 
@@ -84,20 +88,25 @@ git clone https://github.com/archie-cm/final-project-credit-card-fraud-pipeline.
 ```
 cd terraform
 ```
+4. Open `terraform/main.tf` in a text editor, and fill your GCP's project id.
 
-4. Initialize Terraform (set up environment and install Google provider)
+5. Initialize Terraform (set up environment and install Google provider)
 ```
 terraform init
 ```
-5. Plan Terraform infrastructure creation
+6. In terminal you will be asked for a value to continue progress so you just need to write your GCP Project ID then click enter.
+
+7. Plan Terraform infrastructure creation
 ```
 terraform plan
 ```
-6. Create new infrastructure by applying Terraform plan
+8. Create new infrastructure by applying Terraform plan
 ```
 terraform apply
 ```
-7. Check GCP console to see newly-created resources.
+  You will get this message if it is working properly
+
+9. Check GCP console to see newly-created resources.
 
 ### Batch Pipeline
 
