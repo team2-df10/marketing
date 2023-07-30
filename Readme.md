@@ -21,7 +21,9 @@ The objectives of this projects are described below:
 -Create an analytics dashboard to derive meaningful insights and assist the business intelligence/analyst team in making data-driven decisions.
 
 ## Data Pipeline
-![image](https://user-images.githubusercontent.com/108534539/230115233-4fb03230-53f4-4e25-a70d-11cbd7beb4c8.png)
+![image](https://github.com/team2-df10/marketing/assets/122470555/0664d9c7-3279-4225-8e29-9c8f037a61cc)
+
+
 
 ## Tools
 
@@ -105,6 +107,9 @@ terraform plan
 terraform apply
 ```
   You will get this message if it is working properly
+  ![image](https://github.com/team2-df10/marketing/assets/122470555/b99230d3-e516-4693-befd-21a468998d0c)
+
+
 
 9. Check GCP console to see newly-created resources.
 
@@ -160,7 +165,8 @@ python3 producer.py
 python3 consumer.py
 ```
 
-![Screenshot (190)](https://user-images.githubusercontent.com/108534539/230141794-eb04880c-bf5e-4566-aa94-cbe8501e6e3f.png)
+![image](https://github.com/team2-df10/marketing/assets/122470555/dfbc8310-78db-449d-be86-c66a2e871585)
+
 
 6. Open Confluent to view the topic
 ```
