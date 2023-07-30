@@ -1,0 +1,187 @@
+version: 2
+
+sources:
+  - name: final_project
+    schema: final_project
+    description: Dataset for assessing the effectiveness of a bank's marketing campaign.
+    tables:
+      - name: marketing
+        identifier: marketing
+
+models:
+  - name: stg__marketing
+    columns:
+      - name: client_id
+        description: Unique identifier for the client
+        tests:
+          - not_null:
+              severity: warn
+      - name: age
+        description: Age of the client
+        tests:
+          - not_null:
+              severity: warn
+      - name: job
+        description: Type of job
+        tests:
+          - not_null:
+              severity: warn
+      - name: marital
+        description: Marital status of the client
+        tests:
+          - not_null:
+              severity: warn
+      - name: education
+        description: Education level of the client
+        tests:
+          - not_null:
+              severity: warn
+      - name: credit
+        description: Does the client have credit in default?
+        tests:
+          - not_null:
+              severity: warn
+      - name: housing
+        description: Does the client have a housing loan?
+        tests:
+          - not_null:
+              severity: warn
+      - name: loan
+        description: Does the client have a personal loan?
+        tests:
+          - not_null:
+              severity: warn
+      - name: contact
+        description: Contact communication type
+        tests:
+          - not_null:
+              severity: warn
+      - name: month
+        description: Last contact month of the year
+        tests:
+          - not_null:
+              severity: warn
+      - name: day_of_week
+        description: Last contact day of the week
+        tests:
+          - not_null:
+              severity: warn
+      - name: duration
+        description: Last contact duration, in seconds
+        tests:
+          - not_null:
+              severity: warn
+      - name: campaign
+        description: Number of contacts performed during this campaign and for this client
+        tests:
+          - not_null:
+              severity: warn
+      - name: pdays
+        description: Days since the client was last contacted from a previous campaign (999 means client was not previously contacted)
+        tests:
+          - not_null:
+              severity: warn
+      - name: previous
+        description: Number of contacts performed before this campaign and for this client
+        tests:
+          - not_null:
+              severity: warn
+      - name: poutcome
+        description: Outcome of the previous marketing campaign
+        tests:
+          - not_null:
+              severity: warn
+      - name: emp_var_rate
+        description: Employment variation rate - quarterly indicator
+        tests:
+          - not_null:
+              severity: warn
+      - name: cons_price_idx
+        description: Consumer price index - monthly indicator
+        tests:
+          - not_null:
+              severity: warn
+      - name: cons_conf_idx
+        description: Consumer confidence index - monthly indicator
+        tests:
+          - not_null:
+              severity: warn
+      - name: euribor3m
+        description: Euribor 3 month rate - daily indicator
+        tests:
+          - not_null:
+              severity: warn
+      - name: nr_employed
+        description: Number of employees - quarterly indicator
+        tests:
+          - not_null:
+              severity: warn
+      - name: subcribed
+        description: Has the client subscribed to a term deposit?
+        tests:
+          - not_null:
+              severity: warn
+      - name: date
+        description: Date of the record
+        tests:
+          - not_null:
+              severity: warn
+
+  - name: dim__EDUCATION
+    description: List of unique education level.
+
+  - name: dim__MARITAL
+    description: List of unique martial status.
+
+  - name: dim__JOB
+    description: List of unique job client.
+
+  - name: dim__POUTCOME
+    description: List of unique outcome of the previous marketing campaign.
+
+  - name: dim__CONTACT
+    description: List of unique contact communication type.
+
+  - name: dim__CREDIT
+    description: List of unique credit type.
+
+  - name: dim__HOUSING
+    description: List of unique housing loan.
+
+  - name: dim__LOAN
+    description: List of unique personal loan.
+
+  - name: fact__tables
+    description: A fact table is a table that contains the measurements, metrics or facts of a business process.
+
+  - name: partition__DATES
+    description: >
+      Partitioned View by Date, aims to:
+      1. Easier to manage and query data
+      2. Control costs by using query
+  
+  - name: subs_for_finance
+    description: "Number of subscribers based on credit, house loans and personal loans"
+    columns:
+    - name: credit_type
+    - name: housing_loan
+    - name: personal_loan
+    - name: subs
+      tests:
+        - not_null
+    - name: not_subs
+      tests:
+        - not_null
+
+  - name: client__demographics
+    description: "Number of subscribers based on age, job, marital status and education"
+    columns:
+    - name: age
+    - name: job
+    - name: education
+    - name: credit
+    - name: housing
+    - name: loan
+    - name: subcribed
+      tests:
+        - not_null
