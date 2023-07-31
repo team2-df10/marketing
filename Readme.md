@@ -44,12 +44,6 @@ The objectives of this projects are described below:
 
 
 
-## Data Visualization Dashboard
-![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
-
-![Screenshot (187)](https://user-images.githubusercontent.com/108534539/230117643-9577559c-ac6d-4e47-8dcf-4af817646479.png)
-
-
 ## Google Cloud Usage Billing Report
 Data infrastructure we used in this project are entirely built on Google Cloud Platform with more or less 3 weeks of project duration, 
 using this following services:
@@ -126,16 +120,13 @@ sudo docker-compose up
 localhost:8090
 ```
 
-![image](https://user-images.githubusercontent.com/108534539/230137434-ca2e097f-2003-4cf1-8578-a1bc69c0f73d.png)
+![image](https://github.com/team2-df10/marketing/assets/122470555/8f6d43e5-5555-4584-bed8-7d6023d55334)
 
-![image](https://user-images.githubusercontent.com/108534539/231919353-46fb7526-6c9e-4bce-a2f1-752ef3c02012.png)
+4. You can read the dbt process in the dbt folder
 
+This is example how to create datamart  using dbt
+![image](https://github.com/team2-df10/marketing/assets/122470555/e7b3dd41-86c2-4140-86c6-d7414982705a)
 
-4. Open Spark to monitor Spark master and Spark workers
-```
-localhost:8080
-```
-![image](https://user-images.githubusercontent.com/108534539/230136347-1fe5de5e-3585-4b04-8665-a14512f0efe3.png)
 
 
 ### Streaming Pipeline
@@ -168,14 +159,20 @@ python3 consumer.py
 ![image](https://github.com/team2-df10/marketing/assets/122470555/dfbc8310-78db-449d-be86-c66a2e871585)
 
 
-6. Open Confluent to view the topic
+6. Open Confluent to view kafka streaming process
 ```
 localhost:9021
 ```
-![image](https://user-images.githubusercontent.com/108534539/230141014-bb9ef28b-af25-4fa8-b49a-ce5ef8f69aa2.png)
 
-7. Open Schema Registry to view the active schemas
-```
-localhost:8081/schemas
-```
-![image](https://user-images.githubusercontent.com/108534539/230141266-c959f01b-b51e-4dc4-8adf-39cd820f466a.png)
+![image](https://github.com/team2-df10/marketing/assets/122470555/bbcfae2e-4d8b-49d6-9900-9e8ddeff156f)
+
+
+7. Check on BigQuery to see the table
+
+![image](https://github.com/team2-df10/marketing/assets/122470555/9f2df713-08ca-4970-a106-d38959851742)
+
+
+## Data Visualization Dashboard
+![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
+
+![Screenshot (187)](https://user-images.githubusercontent.com/108534539/230117643-9577559c-ac6d-4e47-8dcf-4af817646479.png)
