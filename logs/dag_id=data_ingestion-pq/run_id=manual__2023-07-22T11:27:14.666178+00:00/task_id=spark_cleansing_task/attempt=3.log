@@ -1,43 +1,0 @@
-[2023-07-22T11:36:57.351+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion-pq.spark_cleansing_task manual__2023-07-22T11:27:14.666178+00:00 [queued]>
-[2023-07-22T11:36:57.417+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion-pq.spark_cleansing_task manual__2023-07-22T11:27:14.666178+00:00 [queued]>
-[2023-07-22T11:36:57.418+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 3
-[2023-07-22T11:36:57.503+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): spark_cleansing_task> on 2023-07-22 11:27:14.666178+00:00
-[2023-07-22T11:36:57.526+0000] {standard_task_runner.py:57} INFO - Started process 931 to run task
-[2023-07-22T11:36:57.579+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion-pq', 'spark_cleansing_task', 'manual__2023-07-22T11:27:14.666178+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/data_ingest_pq.py', '--cfg-path', '/tmp/tmpopq1wxzf']
-[2023-07-22T11:36:57.676+0000] {standard_task_runner.py:85} INFO - Job 133: Subtask spark_cleansing_task
-[2023-07-22T11:36:57.917+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:195: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
-  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
-
-[2023-07-22T11:36:58.252+0000] {task_command.py:410} INFO - Running <TaskInstance: data_ingestion-pq.spark_cleansing_task manual__2023-07-22T11:27:14.666178+00:00 [running]> on host 195f909145c6
-[2023-07-22T11:36:58.433+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion-pq' AIRFLOW_CTX_TASK_ID='spark_cleansing_task' AIRFLOW_CTX_EXECUTION_DATE='2023-07-22T11:27:14.666178+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-22T11:27:14.666178+00:00'
-[2023-07-22T11:36:58.435+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
-[2023-07-22T11:36:58.436+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/spark && python3 spark-cleansing.py']
-[2023-07-22T11:36:58.460+0000] {subprocess.py:86} INFO - Output:
-[2023-07-22T11:37:00.080+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.7/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
-[2023-07-22T11:37:03.005+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
-[2023-07-22T11:37:03.006+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-[2023-07-22T11:37:03.345+0000] {subprocess.py:93} INFO - 23/07/22 11:37:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-[2023-07-22T11:37:18.922+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 1) / 1]                                                                                /home/***/.local/lib/python3.7/site-packages/pyspark/context.py:317: FutureWarning: Python 3.7 support is deprecated in Spark 3.4.
-[2023-07-22T11:37:18.926+0000] {subprocess.py:93} INFO -   warnings.warn("Python 3.7 support is deprecated in Spark 3.4.", FutureWarning)
-[2023-07-22T11:37:18.927+0000] {subprocess.py:93} INFO - ######################################
-[2023-07-22T11:37:18.928+0000] {subprocess.py:93} INFO - READING CSV FILE
-[2023-07-22T11:37:18.930+0000] {subprocess.py:93} INFO - ######################################
-[2023-07-22T11:37:18.931+0000] {subprocess.py:93} INFO - ######################################
-[2023-07-22T11:37:18.933+0000] {subprocess.py:93} INFO - FORMAT STANDARIZATION
-[2023-07-22T11:37:18.934+0000] {subprocess.py:93} INFO - ######################################
-[2023-07-22T11:37:18.934+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
-[2023-07-22T11:37:18.935+0000] {subprocess.py:93} INFO -   File "spark-cleansing.py", line 50, in <module>
-[2023-07-22T11:37:18.935+0000] {subprocess.py:93} INFO -     when(df.education.endswith('4y'), regexp_replace(df.education, 'basic.4y', 'basic')) \
-[2023-07-22T11:37:18.935+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/pyspark/sql/dataframe.py", line 2978, in __getattr__
-[2023-07-22T11:37:18.935+0000] {subprocess.py:93} INFO -     "'%s' object has no attribute '%s'" % (self.__class__.__name__, name)
-[2023-07-22T11:37:18.936+0000] {subprocess.py:93} INFO - AttributeError: 'DataFrame' object has no attribute 'education'
-[2023-07-22T11:37:19.725+0000] {subprocess.py:97} INFO - Command exited with return code 1
-[2023-07-22T11:37:19.746+0000] {taskinstance.py:1824} ERROR - Task failed with exception
-Traceback (most recent call last):
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
-    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
-airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
-[2023-07-22T11:37:19.754+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=data_ingestion-pq, task_id=spark_cleansing_task, execution_date=20230722T112714, start_date=20230722T113657, end_date=20230722T113719
-[2023-07-22T11:37:19.778+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 133 for task spark_cleansing_task (Bash command failed. The command returned a non-zero exit code 1.; 931)
-[2023-07-22T11:37:19.810+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
-[2023-07-22T11:37:19.845+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
