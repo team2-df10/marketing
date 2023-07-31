@@ -123,6 +123,9 @@ localhost:8090
 ![image](https://github.com/team2-df10/marketing/assets/122470555/8f6d43e5-5555-4584-bed8-7d6023d55334)
 
 4. You can read the dbt process in the dbt folder
+This is example how to create datamart  using dbt
+![image](https://github.com/team2-df10/marketing/assets/122470555/e7b3dd41-86c2-4140-86c6-d7414982705a)
+
 
 
 ### Streaming Pipeline
