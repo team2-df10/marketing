@@ -1,4 +1,4 @@
-# Credit Card Fraud Pipeline Subscription End-to-End Data Pipeline
+# Bank Marketing Campaign End-to-End Data Pipeline
 
 ## Bussiness Understanding
 
@@ -35,7 +35,7 @@ The objectives of this projects are described below:
 - Transformation : Spark, dbt
 - Data Lake: Google Cloud Storage
 - Data Warehouse: BigQuery
-- Data Visualization: Looker
+- Data Visualization: Tableau
 - Language : Python
 
 ## Dataset
@@ -173,6 +173,5 @@ localhost:9021
 
 
 ## Data Visualization Dashboard
-![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
+![image](https://github.com/team2-df10/marketing/assets/122470555/9289bfb6-56d3-45c2-872c-238a7c47d346)
 
-![Screenshot (187)](https://user-images.githubusercontent.com/108534539/230117643-9577559c-ac6d-4e47-8dcf-4af817646479.png)
