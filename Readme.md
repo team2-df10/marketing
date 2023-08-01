@@ -1,4 +1,4 @@
-# Bank Marketing Campaign End-to-End Data Pipeline
+![image](https://github.com/team2-df10/marketing/assets/56474181/a96e703b-aaae-4ce2-8bbb-7fee6beb6cd6)# Bank Marketing Campaign End-to-End Data Pipeline
 
 ## Bussiness Understanding
 
@@ -127,6 +127,9 @@ localhost:8090
 This is example how to create datamart  using dbt
 ![image](https://github.com/team2-df10/marketing/assets/122470555/e7b3dd41-86c2-4140-86c6-d7414982705a)
 
+5. If you are using dbt inside airflow the result will be like this 
+
+![image](https://github.com/team2-df10/marketing/blob/22dff5be07d8848ff62ca4fb3d317845769a1f06/images/Proof%20airlfow.jpeg)
 
 
 ### Streaming Pipeline
