@@ -11,6 +11,7 @@ from airflow.hooks.base import BaseHook
 from airflow.exceptions import AirflowNotFoundException
 from airflow.operators.dummy import DummyOperator
 from airflow import settings
+#from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateExternalTableOperator, BigQueryOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryExecuteQueryOperator,BigQueryCreateExternalTableOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 import pyarrow.csv as pv
@@ -24,9 +25,13 @@ BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", 'final_project')
 
 dataset_file = "bank_marketing.csv"
 dataset_url = f"https://drive.google.com/file/d/1t4IrOjA0xIoTwlpLjkJYnq8V7g-qP4iU"
+# path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
 path_to_local_home = "/opt/airflow"
 parquet_file = dataset_file.replace('.csv', '.parquet')
 destination_table = os.environ.get("BIGQUERY_TABLE", 'marketing')
+
+#dbt_loc = "/opt/airflow/dbt"
+#spark_master = "spark://spark:7077"
 
 def format_to_parquet(src_file):
     if not src_file.endswith('.csv'):
@@ -63,7 +68,7 @@ def add_gcp_connection(ds, **kwargs):
     conn_type='google_cloud_platform',
     extra =
     {"extra__google_cloud_platform__key_path":"/opt/airflow/service-account.json", 
-    "extra__google_cloud_platform__project":"snappy-lattice-393408", 
+    "extra__google_cloud_platform__project":"gold-episode-394309", 
     "extra__google_cloud_platform__scope":"https://www.googleapis.com/auth/cloud-platform"}
     )
 
@@ -78,6 +83,10 @@ def add_gcp_connection(ds, **kwargs):
     session.add(new_conn)
     session.commit()
 
+query = """CREATE OR REPLACE EXTERNAL TABLE final_project.marketing
+OPTIONS(
+  "sourceFormat": "PARQUET",
+  "sourceUris": [f"gs://{BUCKET}/raw/{parquet_file}"], """
 
 # define the DAG pipeline
 default_args = {
@@ -87,15 +96,14 @@ default_args = {
     "retries": 1,
 }
 
-
 # NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
-    dag_id="data_ingestion-pq",
+    dag_id="data_ingestion-team2",
     schedule_interval="@weekly",
     default_args=default_args,
     catchup=False,
     max_active_runs=1,
-    tags=['dtc-de'], 
+    tags=['data_ingestion', 'gcs', 'bigquery', 'parquet'], 
     ) as dag: 
     add_gcp_conn_task = PythonOperator(
         task_id="add_gcp_conn_task",
@@ -129,7 +137,9 @@ with DAG(
         op_kwargs={
             "bucket": BUCKET,
             "object_name": f"raw/{parquet_file}",                       # for parquet
+            #"object_name": f"raw/{dataset_file}",                     # for csv
             "local_file": f"{path_to_local_home}/{parquet_file}",       # for parquet file
+            #"local_file": f"{path_to_local_home}/{dataset_file}"      # for csv
         },
     )
 
@@ -137,8 +147,7 @@ with DAG(
         task_id='load_gcs_to_bq',
         bucket=BUCKET,
         source_objects=[f"raw/{parquet_file}"],
-        destination_project_dataset_table=f"{PROJECT_ID}.{BIGQUERY_DATASET}.{destination_table}",
-        skip_leading_rows=1,
+        destination_project_dataset_table=f"{BIGQUERY_DATASET}.{destination_table}",
         source_format= 'PARQUET',
         write_disposition='WRITE_TRUNCATE',
         create_disposition='CREATE_IF_NEEDED',
@@ -149,12 +158,12 @@ with DAG(
             {"name": "job", "type": "STRING", "mode": "NULLABLE"},
             {"name": "marital", "type": "STRING", "mode": "NULLABLE"},
             {"name": "education", "type": "STRING", "mode": "NULLABLE"},
-            {"name": "defaultloan", "type": "STRING", "mode": "NULLABLE"},
-            {"name": "housingloan", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "credit", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "housing", "type": "STRING", "mode": "NULLABLE"},
             {"name": "loan", "type": "STRING", "mode": "NULLABLE"},
             {"name": "contact", "type": "STRING", "mode": "NULLABLE"},
-            {"name": "month", "type": "STRING", "mode": "NULLABLE"},
-            {"name": "day_of_week", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "month", "type": "INTEGER", "mode": "NULLABLE"},
+            {"name": "day_of_week", "type": "INTEGER", "mode": "NULLABLE"},
             {"name": "duration", "type": "INTEGER", "mode": "NULLABLE"},
             {"name": "campaign", "type": "INTEGER", "mode": "NULLABLE"},
             {"name": "pdays", "type": "INTEGER", "mode": "NULLABLE"},
@@ -165,20 +174,19 @@ with DAG(
             {"name": "cons_conf_idx", "type": "FLOAT", "mode": "NULLABLE"},
             {"name": "euribor3m", "type": "FLOAT", "mode": "NULLABLE"},
             {"name": "nr_employed", "type": "FLOAT", "mode": "NULLABLE"},
-            {"name": "subcribed", "type": "STRING", "mode": "NULLABLE"}
+            {"name": "subcribed", "type": "INTEGER", "mode": "NULLABLE"},
+            {"name": "date", "type": "DATE", "mode": "NULLABLE"},
             ],
     )
-    
+
     dbt_init_task = BashOperator(
         task_id="dbt_init_task",
-        bash_command=f" cd /opt/airflow/dbt/marketing_dwh" + " && dbt deps --profiles-dir && dbt seed --profiles-dir"
+        bash_command= "cd /opt/airflow/dbt/bank_marketing && dbt deps && dbt seed --profiles-dir ."
     )
-
     run_dbt_task = BashOperator(
         task_id="run_dbt_task",
-        bash_command=f" cd /opt/airflow/dbt/marketing_dwh" + "&& dbt run --profiles-dir"
+        bash_command= "cd /opt/airflow/dbt/bank_marketing && dbt deps && dbt run --profiles-dir ."
     )
-
 
     finish = DummyOperator(task_id='finish')
 

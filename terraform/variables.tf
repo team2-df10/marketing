@@ -8,7 +8,7 @@ variable "project" {
 
 variable "region" {
   description = "Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"
-  default = "us-central1"
+  default = "asia-southeast2"
   type = string
 }
 
@@ -29,4 +29,8 @@ variable "BQ_TABLE" {
   default = "final_project_table"
 }
 
-
+variable "BQ_TABLE_2" {
+  description = "BigQuery table that raw data (from kafka producer) will be written to in BQ_DATASET"
+  type = string
+  default = "final_project_kafka_table"
+}

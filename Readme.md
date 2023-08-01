@@ -174,4 +174,3 @@ localhost:9021
 
 ## Data Visualization Dashboard
 ![image](https://github.com/team2-df10/marketing/assets/122470555/9289bfb6-56d3-45c2-872c-238a7c47d346)
-

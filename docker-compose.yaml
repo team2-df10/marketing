@@ -19,14 +19,14 @@ x-airflow-common:
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/service-account.json'
     # DBT_PROFILES_DIR: /opt/airflow/dbt
     # Note : Please add your own GCP_PROJECT_ID and GCP_GCS_BUCKET as your configuration
-    GCP_PROJECT_ID: 'snappy-lattice-393408'
-    GCP_GCS_BUCKET: 'final_project_data_lake_snappy-lattice-393408'
+    GCP_PROJECT_ID: 'data-fellowship-10-project'
+    GCP_GCS_BUCKET: 'final_project_data_lake_gold-episode-394309'
     
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    - ./dbt/marketing_dwh:/opt/airflow/dbt/marketing_dwh
+    - ./dbt/bank_marketing:/opt/airflow/dbt/bank_marketing
     - ./spark:/opt/airflow/spark
     - ./datasets:/opt/airflow/datasets
     - ~/.dbt:/home/airflow/.dbt:ro
@@ -202,8 +202,8 @@ services:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
       _AIRFLOW_WWW_USER_CREATE: 'true'
-      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-aku}
-      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-aku}
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
     user: "0:0"
     volumes:
       - .:/sources
