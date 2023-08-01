@@ -119,8 +119,8 @@ sudo docker-compose up
 ```
 localhost:8090
 ```
+![image](https://github.com/team2-df10/marketing/assets/122470555/7e71a4d5-ece7-4b53-8799-1c7ac0090e94)
 
-![image](https://github.com/team2-df10/marketing/assets/122470555/8f6d43e5-5555-4584-bed8-7d6023d55334)
 
 4. You can read the dbt process in the dbt folder
 
