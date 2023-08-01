@@ -119,7 +119,14 @@ sudo docker-compose up
 ```
 localhost:8090
 ```
-![image](https://github.com/team2-df10/marketing/assets/122470555/7e71a4d5-ece7-4b53-8799-1c7ac0090e94)
+
+This is UI for Airflow
+![image](https://github.com/team2-df10/marketing/assets/122470555/2a35882c-2173-435b-bf25-893666876268)
+
+
+If you run the dag, you will get this workflow
+![image](https://github.com/team2-df10/marketing/assets/122470555/a0cd1b45-3594-44ef-90df-888cf5197a69)
+
 
 
 4. You can read the dbt process in the dbt folder
