@@ -39,6 +39,9 @@ RUN pip install pandas
 RUN pip install numpy
 RUN pip install apache-airflow-providers-apache-spark
 RUN pip install airflow-dbt-python[bigquery]
+RUN pip install pyarrow
+RUN pip install apache-airflow[google]
+RUN pip install apache-airflow-providers-google
 
 COPY --chown=airflow:root ./dags /opt/airflow/dags
-COPY --chown=airflow:airflow ./dbt/marketing_dwh /opt/airflow/dbt/marketing_dwh
+

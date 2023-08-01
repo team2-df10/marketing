@@ -2,3 +2,4 @@ dbt-core
 dbt-bigquery
 pyarrow
 apache-airflow[google]
+apache-airflow-providers-google

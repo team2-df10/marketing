@@ -2,34 +2,34 @@
 
 ## Bussiness Understanding
 
-A banking institution conducted campaigns to promote term deposits to its clients, primarily using telemarketing methods like direct phone calls. The target variable (y) indicates whether the client agreed ('yes') or declined ('no') to place a deposit after the campaign. 
-
-The bank aims to identify the features or client statuses that lead to successful offers, making their campaigns more cost and time efficient.
+Credit score is an important metric for banks to rate the credit performance of their applicants. 
+They use personal information and financial records of credit card applicants to predict whether these applicants will default in the future or not. 
+From these predictions, the banks will then decide if they want to issue credit cards to these applicants or not. 
+The banks are asking us to create an end-to-end pipeline to help them handle this problem. 
+The original datasets and data dictionary can be found in [here](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction).
 
 ## Problem Statements
 
-The bank seeks to increase the campaign's efficiency by targeting clients with a higher chance of accepting the deposit offer, using the features from the data.
+Financial institution is experiencing challenges in managing and analyzing its large volume of credit card applicant data. This makes it difficult to mitigate fraud from credit card applicant data.
 
 ## Goal
-To understand the target audience for the campaign, a data pipeline is created to facilitate data analysis and reporting application record.
+To mitigate the possibility of fraud on credit card applicant, a data pipeline is created to facilitate data analysis and reporting application record.
 
 ## Objective
 The objectives of this projects are described below:
-
--Design an end-to-end data pipeline with Lambda Architecture, providing the business intelligence/analyst team with the flexibility to choose between using batched data or real-time streamed data. This ensures efficient data processing and empowers timely decision-making.
-
--Create an analytics dashboard to derive meaningful insights and assist the business intelligence/analyst team in making data-driven decisions.
+- Design and create end-to-end data pipeline with lambda architecture 
+- Create a data warehouse that can integrate all the credit card applicant data from different sources and provide a single source of truth for the institution's analytics needs
+- Create a visualization dashboard to get insights from the data, which can be used for business decisions and reach goal from this project.
 
 ## Data Pipeline
-![image](https://github.com/team2-df10/marketing/assets/122470555/0664d9c7-3279-4225-8e29-9c8f037a61cc)
-
-
+![image](https://user-images.githubusercontent.com/108534539/230115233-4fb03230-53f4-4e25-a70d-11cbd7beb4c8.png)
 
 ## Tools
 
 - Cloud : Google Cloud Platform
 - Infrastructure as Code : Terraform
 - Containerization : Docker, Docker Compose
+- Compute : Virtual Machine (VM) instance
 - Stream Processing : Kafka
 - Orchestration: Airflow
 - Transformation : Spark, dbt
@@ -38,16 +38,20 @@ The objectives of this projects are described below:
 - Data Visualization: Looker
 - Language : Python
 
-## Dataset
-![image](https://github.com/team2-df10/marketing/assets/122470555/72fdc329-4d5d-4322-ad1f-159878467b73)
-![image](https://github.com/team2-df10/marketing/assets/122470555/f84f8718-a859-4c33-86f3-555579583ffa)
+## Reproducibility
+![Screenshot (189)](https://user-images.githubusercontent.com/108534539/230118957-612b63c8-4edd-4aaa-9700-92b439ff870a.png)
 
+## Data Visualization Dashboard
+![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
+
+![Screenshot (187)](https://user-images.githubusercontent.com/108534539/230117643-9577559c-ac6d-4e47-8dcf-4af817646479.png)
 
 
 ## Google Cloud Usage Billing Report
 Data infrastructure we used in this project are entirely built on Google Cloud Platform with more or less 3 weeks of project duration, 
 using this following services:
 - Google Cloud Storage (pay for what you use)
+- Virtual Machine (VM) instance (cost are based Vcpu & memory and storage disk)
 - Google BigQuery (first terrabyte processed are free of charge)
 - Google Looker Studio (cost is based from number of Looker Blocks (data models and visualizations), users, and the number of queries processed per month)
 > Total cost around 6$ out of 300$ free credits that GCP provided
@@ -55,7 +59,7 @@ using this following services:
 ## Project Instruction
 ### Clone this repository and enter the directory
 ```bash
-git clone https://github.com/team2-df10/marketing
+git clone https://github.com/archie-cm/final-project-credit-card-fraud-pipeline.git && cd final-project-credit-card-fraud-pipeline
 ```
 
 
@@ -76,7 +80,7 @@ git clone https://github.com/team2-df10/marketing
 ```
 ### Cloud Resource Provisioning with Terraform
 
-1. Install `gcloud` SDK, `terraform` CLI, and create a GCP project. Then, create a service account with **Storage Admin**, **Storage Pbject Admin**, and **BigQuery Admin** role. Download the JSON credential and store it on `service-account.json`. 
+1. Install `gcloud` SDK, `terraform` CLI, and create a GCP project. Then, create a service account with **Storage Admin**, **Storage Pbject Admin**, and **BigQuery Admin** role. Download the JSON credential and store it on `service-account.json`. Open `terraform/main.tf` in a text editor, and fill your GCP's project id.
 
 2. Enable IAM API and IAM Credential API in GCP.
 
@@ -84,28 +88,20 @@ git clone https://github.com/team2-df10/marketing
 ```
 cd terraform
 ```
-4. Open `terraform/main.tf` in a text editor, and fill your GCP's project id.
 
-5. Initialize Terraform (set up environment and install Google provider)
+4. Initialize Terraform (set up environment and install Google provider)
 ```
 terraform init
 ```
-6. In terminal you will be asked for a value to continue progress so you just need to write your GCP Project ID then click enter.
-
-7. Plan Terraform infrastructure creation
+5. Plan Terraform infrastructure creation
 ```
 terraform plan
 ```
-8. Create new infrastructure by applying Terraform plan
+6. Create new infrastructure by applying Terraform plan
 ```
 terraform apply
 ```
-  You will get this message if it is working properly
-  ![image](https://github.com/team2-df10/marketing/assets/122470555/b99230d3-e516-4693-befd-21a468998d0c)
-
-
-
-9. Check GCP console to see newly-created resources.
+7. Check GCP console to see newly-created resources.
 
 ### Batch Pipeline
 
@@ -120,13 +116,16 @@ sudo docker-compose up
 localhost:8090
 ```
 
-![image](https://github.com/team2-df10/marketing/assets/122470555/8f6d43e5-5555-4584-bed8-7d6023d55334)
+![image](https://user-images.githubusercontent.com/108534539/230137434-ca2e097f-2003-4cf1-8578-a1bc69c0f73d.png)
 
-4. You can read the dbt process in the dbt folder
+![image](https://user-images.githubusercontent.com/108534539/231919353-46fb7526-6c9e-4bce-a2f1-752ef3c02012.png)
 
-This is example how to create datamart  using dbt
-![image](https://github.com/team2-df10/marketing/assets/122470555/e7b3dd41-86c2-4140-86c6-d7414982705a)
 
+4. Open Spark to monitor Spark master and Spark workers
+```
+localhost:8080
+```
+![image](https://user-images.githubusercontent.com/108534539/230136347-1fe5de5e-3585-4b04-8665-a14512f0efe3.png)
 
 
 ### Streaming Pipeline
@@ -156,23 +155,16 @@ python3 producer.py
 python3 consumer.py
 ```
 
-![image](https://github.com/team2-df10/marketing/assets/122470555/dfbc8310-78db-449d-be86-c66a2e871585)
+![Screenshot (190)](https://user-images.githubusercontent.com/108534539/230141794-eb04880c-bf5e-4566-aa94-cbe8501e6e3f.png)
 
-
-6. Open Confluent to view kafka streaming process
+6. Open Confluent to view the topic
 ```
 localhost:9021
 ```
+![image](https://user-images.githubusercontent.com/108534539/230141014-bb9ef28b-af25-4fa8-b49a-ce5ef8f69aa2.png)
 
-![image](https://github.com/team2-df10/marketing/assets/122470555/bbcfae2e-4d8b-49d6-9900-9e8ddeff156f)
-
-
-7. Check on BigQuery to see the table
-
-![image](https://github.com/team2-df10/marketing/assets/122470555/9f2df713-08ca-4970-a106-d38959851742)
-
-
-## Data Visualization Dashboard
-![Screenshot (188)](https://user-images.githubusercontent.com/108534539/230117610-c579e654-8bf5-487b-be4f-f0354212f220.png)
-
-![Screenshot (187)](https://user-images.githubusercontent.com/108534539/230117643-9577559c-ac6d-4e47-8dcf-4af817646479.png)
+7. Open Schema Registry to view the active schemas
+```
+localhost:8081/schemas
+```
+![image](https://user-images.githubusercontent.com/108534539/230141266-c959f01b-b51e-4dc4-8adf-39cd820f466a.png)
